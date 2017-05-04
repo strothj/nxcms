@@ -1,22 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
+import theme from '../assets/react-toolbox/theme';
+import '../assets/react-toolbox/theme.css';
+import routes from './routes';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const routesWithLayouts = (
+  <div>
+    {routes.map(route => (
+      <Route
+        key={route.key}
+        path={route.path}
+        exact={route.exact}
+        render={() => <route.layout component={route.component} />}
+      />
+    ))}
+  </div>
+);
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Router>
+      {routesWithLayouts}
+    </Router>
+  </ThemeProvider>
+);
 
 export default App;
