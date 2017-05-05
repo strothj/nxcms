@@ -1,29 +1,46 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-import theme from '../assets/react-toolbox/theme';
-import '../assets/react-toolbox/theme.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import routes from './routes';
 
-const routesWithLayouts = (
+const routesWithLayouts = routes.map(route => (
+  <Route
+    key={route.key}
+    path={route.path}
+    exact={route.exact}
+    render={() => <route.layout component={route.component} />}
+  />
+));
+
+const SharedStyles = props => (
   <div>
-    {routes.map(route => (
-      <Route
-        key={route.key}
-        path={route.path}
-        exact={route.exact}
-        render={() => <route.layout component={route.component} />}
-      />
-    ))}
+    {props.children}
+    <style jsx global>{`
+      html {
+        box-sizing: border-box;
+      }
+
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+      }
+    `}</style>
   </div>
 );
 
 const App = () => (
-  <ThemeProvider theme={theme}>
-    <Router>
-      {routesWithLayouts}
-    </Router>
-  </ThemeProvider>
+  <MuiThemeProvider>
+    <SharedStyles>
+      <Router>
+        <Switch>
+          {routesWithLayouts}
+        </Switch>
+      </Router>
+    </SharedStyles>
+  </MuiThemeProvider>
 );
 
 export default App;

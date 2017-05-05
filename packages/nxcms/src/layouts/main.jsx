@@ -1,17 +1,24 @@
 import React from 'react';
-import Layout from 'react-toolbox/lib/layout/Layout';
-import Panel from 'react-toolbox/lib/layout/Panel';
-import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import AppBar from '../components/AppBar';
 
 const MainLayout = props => (
-  <Layout>
-    <Panel>
-      <AppBar title="test" />
-      <div>
-        {props.component}
-      </div>
-    </Panel>
-  </Layout>
+  <div>
+    <header className="appbar">
+      <AppBar />
+    </header>
+    <main>
+      {props.component}
+    </main>
+
+    <style jsx>{`
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      }
+    `}</style>
+  </div>
 );
 
 export default MainLayout;
