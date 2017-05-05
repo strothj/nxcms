@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from './theme';
 import routes from './routes';
 
 const routesWithLayouts = routes.map(route => (
@@ -18,6 +19,8 @@ const SharedStyles = props => (
     <style jsx global>{`
       html {
         box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
       }
 
       *, *:before, *:after {
@@ -32,7 +35,7 @@ const SharedStyles = props => (
 );
 
 const App = () => (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={theme}>
     <SharedStyles>
       <Router>
         <Switch>

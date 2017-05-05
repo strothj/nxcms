@@ -12,6 +12,15 @@ for (let i = 0; i < 1; i += 1)
     <br key={i} />,
   );
 
-const HomePage = <div>{tempImgs}</div>;
+const HomePage = (
+  <div>
+    {tempImgs}
+    <style jsx>{`
+      div :global(img) {
+        max-width: 100%;
+      }
+`}</style>
+  </div>
+);
 
 export default HomePage;

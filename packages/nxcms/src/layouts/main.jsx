@@ -1,14 +1,18 @@
 import React from 'react';
 import AppBar from '../components/AppBar';
+import Footer from '../components/Footer';
 
 const MainLayout = props => (
   <div>
-    <header className="appbar">
+    <header>
       <AppBar />
     </header>
     <main>
       {props.component}
     </main>
+    <footer>
+      <Footer />
+    </footer>
 
     <style jsx>{`
       div {
