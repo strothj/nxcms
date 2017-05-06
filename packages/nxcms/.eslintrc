@@ -2,29 +2,19 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "jest": true
+    "mocha": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".spec.js"] }],
     "react/prop-types": "off",
-    "import/no-named-default": "off",
-    "react/no-array-index-key": "off",
-    "react/require-default-props": "off",
+    "react/jsx-filename-extension": ["error", {
+      "extensions": [ ".jsx", ".spec.js" ]
+    }],
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": ["src/**/*.spec.js"]
     }],
-    "react/jsx-closing-bracket-location": "off",
-    "react/jsx-curly-spacing": "off",
-    "react/jsx-equals-spacing": "off",
-    "react/jsx-first-prop-new-line": "off",
-    "react/jsx-indent": "off",
-    "react/jsx-indent-props": "off",
-    "react/jsx-space-before-closing": "off",
-    "react/jsx-tag-spacing": "off",
-    "react/jsx-wrap-multilines": "off",
     "prettier/prettier": ["error", {
       "singleQuote": true,
-      "trailingComma": "all"
+      "trailingComma": "es5"
     }]
   },
   "extends": [

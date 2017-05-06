@@ -9,7 +9,7 @@ for (let i = 0; i < 1; i += 1)
       src="https://placekitten.com/350/350"
       alt="placeholder"
     />,
-    <br key={i} />,
+    <br key={i} />
   );
 
 const HomePage = (
