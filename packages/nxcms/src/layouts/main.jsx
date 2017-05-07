@@ -1,6 +1,6 @@
 import React from 'react';
-import AppBar from '../components/AppBar';
-import Footer from '../components/Footer';
+import AppBar from 'components/AppBar';
+import Footer from 'components/Footer';
 
 const MainLayout = props => (
   <div>

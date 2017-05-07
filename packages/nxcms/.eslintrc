@@ -23,5 +23,8 @@
   ],
   "plugins": [
     "prettier"
-  ]
+  ],
+  "settings": {
+    "import/resolver": { "babel-module": {} }
+  }
 }

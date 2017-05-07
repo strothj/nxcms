@@ -2,4 +2,5 @@
 --watch-extensions jsx
 --require ignore-styles
 --require env-test
+--require src/test-utils/setup.js
 ./src/**/*.spec.js

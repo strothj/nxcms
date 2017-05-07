@@ -1,5 +1,5 @@
 import React from 'react';
-import { breakpoints } from '../styles';
+import { breakpoints } from 'styles';
 
 export default props => (
   <div>

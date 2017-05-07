@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { grey50, grey500 } from 'material-ui/styles/colors';
 
-import { breakpoints } from '../../styles';
+import { breakpoints } from 'styles';
 
 const styles = {
   field: { color: grey50 },

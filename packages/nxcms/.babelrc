@@ -6,6 +6,14 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "styled-jsx/babel"
+    "styled-jsx/babel",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./components",
+        "^styles$": "./styles.js",
+        "test-utils": "./test-utils"
+      }
+    }]
   ]
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 
-import Container from '../Container';
-import { Caption, Headline } from '../Typography';
+import Container from 'components/Container';
+import { Caption, Headline } from 'components/Typography';
 import NewsletterSignupForm from './NewsletterSignupForm';
 import backgroundImage from './backgroundImage.jpg';
 
