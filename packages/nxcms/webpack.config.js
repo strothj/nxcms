@@ -136,7 +136,7 @@ const devServer = (isProduction, devServerPort, publicAccessible) =>
         publicPath: '/',
         port: devServerPort,
         proxy: {
-          '/api': { target: 'http://localhost:3000/api', secure: false },
+          '/api': { target: 'http://localhost:3000', secure: false },
         },
       };
 

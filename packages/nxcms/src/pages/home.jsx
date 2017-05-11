@@ -12,7 +12,7 @@ for (let i = 0; i < 1; i += 1)
     <br key={i} />
   );
 
-const HomePage = (
+const HomePage = () => (
   <div>
     {tempImgs}
     <style jsx>{`

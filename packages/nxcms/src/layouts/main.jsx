@@ -8,7 +8,7 @@ const MainLayout = props => (
       <AppBar />
     </header>
     <main>
-      {props.component}
+      <props.component />
     </main>
     <footer>
       <Footer />
