@@ -43,6 +43,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
+    "start:public": "webpack-dev-server --open --env.publicAccessible",
     "build": "webpack --env.production",
     "test": "mocha --opts mocha.opts",
     "lint": "eslint src/**/*.js src/**/*.jsx",

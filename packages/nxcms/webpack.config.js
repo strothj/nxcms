@@ -8,6 +8,7 @@ module.exports = (env = {}) => {
   const isProduction = env.production === true;
   const devServerPort = env.port || 3000;
   const publicPath = env.publicPath || '/';
+  const publicAccessible = env.publicAccessible === true;
 
   return {
     context: resolve(__dirname, 'src'),
@@ -16,7 +17,7 @@ module.exports = (env = {}) => {
     module: modules(isProduction),
     resolve: { extensions: ['.js', '.jsx'] },
     plugins: plugins(isProduction),
-    devServer: devServer(isProduction, devServerPort),
+    devServer: devServer(isProduction, devServerPort, publicAccessible),
     devtool: isProduction ? 'source-map' : 'inline-source-map',
   };
 };
@@ -123,11 +124,13 @@ const plugins = isProduction => {
   return pluginsList;
 };
 
-const devServer = (isProduction, devServerPort) =>
+const devServer = (isProduction, devServerPort, publicAccessible) =>
   isProduction
     ? {}
     : {
         hot: true,
+        host: publicAccessible ? '0.0.0.0' : 'localhost',
+        disableHostCheck: publicAccessible,
         contentBase: resolve(__dirname, 'dist'),
         publicPath: '/',
         port: devServerPort,
