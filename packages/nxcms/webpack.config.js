@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env = {}) => {
   const isProduction = env.production === true;
-  const devServerPort = env.port || 3000;
+  const devServerPort = env.port || 3001;
   const publicPath = env.publicPath || '/';
   const publicAccessible = env.publicAccessible === true;
 
@@ -135,6 +135,9 @@ const devServer = (isProduction, devServerPort, publicAccessible) =>
         contentBase: resolve(__dirname, 'dist'),
         publicPath: '/',
         port: devServerPort,
+        proxy: {
+          '/api': { target: 'http://localhost:3000/api', secure: false },
+        },
       };
 
 const babelOptions = () => {

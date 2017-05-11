@@ -24,6 +24,7 @@ const MainLayout = props => (
 
       main {
         flex: 1;
+        min-height: 600px;
       }
     `}</style>
   </div>
