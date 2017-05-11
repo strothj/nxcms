@@ -19,7 +19,11 @@ const MainLayout = props => (
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
       }
     `}</style>
   </div>

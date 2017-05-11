@@ -30,6 +30,9 @@ const SharedStyles = props => (
       body {
         margin: 0;
       }
+
+      /* Internet Explorer Flexbox "flex-direction: column" fix */
+      div#root > div { display: flex; }
     `}</style>
   </div>
 );
