@@ -24,8 +24,9 @@ module.exports = (env = {}) => {
 
 const entry = (isProduction, devServerPort) =>
   isProduction
-    ? { app: ['./index.js'] }
+    ? { app: ['babel-polyfill', './index.js'] }
     : [
+        'babel-polyfill',
         'react-hot-loader/patch',
         `webpack-dev-server/client?http://localhost:${devServerPort}`,
         'webpack/hot/only-dev-server',
