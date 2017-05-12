@@ -1,12 +1,8 @@
 import axios from 'axios';
 
 const UNKNOWN_ERR = 'internal server error';
-const apiUrl = process.env.NODE_ENV === 'development'
-  ? '/api'
-  : 'https://nxcms-api.herokuapp.com/api';
 let authToken = null; // eslint-disable-line
-const apiPost = (resource, params) =>
-  axios.post(`${apiUrl}/${resource}`, params);
+const apiPost = (resource, params) => axios.post(`/api/${resource}`, params);
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const loginSuccess = (token, profile) => {

@@ -3,6 +3,8 @@ const { join, resolve } = require('path');
 const { readFileSync } = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env = {}) => {
   const isProduction = env.production === true;
@@ -111,6 +113,10 @@ const plugins = isProduction => {
           name: 'manifest',
           chunks: ['vendor'],
         }),
+        new CleanWebpackPlugin(join(__dirname, 'dist')),
+        new CopyWebpackPlugin([
+          { from: join(__dirname, '_redirects'), to: join(__dirname, 'dist') },
+        ]),
       ]
     );
   else
