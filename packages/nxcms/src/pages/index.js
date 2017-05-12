@@ -1,2 +1,6 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as HomePage } from './home';
+import * as dashboard from './dashboard';
+
+export { dashboard };
+export { default as IndexPage } from './IndexPage';
+export { default as NotFoundPage } from './NotFoundPage';
+export { default as LoginPage } from './LoginPage';

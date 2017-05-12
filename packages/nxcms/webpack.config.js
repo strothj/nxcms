@@ -134,6 +134,7 @@ const devServer = (isProduction, devServerPort, publicAccessible) =>
         disableHostCheck: publicAccessible,
         contentBase: resolve(__dirname, 'dist'),
         publicPath: '/',
+        historyApiFallback: true,
         port: devServerPort,
         proxy: {
           '/api': { target: 'http://localhost:3000', secure: false },

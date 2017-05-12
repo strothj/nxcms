@@ -11,6 +11,7 @@
       "root": ["./src"],
       "alias": {
         "components": "./components",
+        "^store": "./store",
         "^styles$": "./styles.js",
         "test-utils": "./test-utils"
       }

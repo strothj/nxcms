@@ -1,14 +1,15 @@
 import React from 'react';
 import AppBar from 'components/AppBar';
 import Footer from 'components/Footer';
+import Routes from 'components/Routes';
 
-const MainLayout = props => (
+const Layout = () => (
   <div>
     <header>
       <AppBar />
     </header>
     <main>
-      <props.component />
+      <Routes />
     </main>
     <footer>
       <Footer />
@@ -30,4 +31,4 @@ const MainLayout = props => (
   </div>
 );
 
-export default MainLayout;
+export default Layout;

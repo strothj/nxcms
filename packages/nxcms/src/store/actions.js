@@ -28,3 +28,6 @@ export const login = (username, password) => async dispatch => {
     dispatch(loginError(e.response.data.message));
   }
 };
+
+export const LOGIN_REDIRECT = 'LOGIN_REDIRECT';
+export const loginRedirect = url => ({ type: LOGIN_REDIRECT, url });
