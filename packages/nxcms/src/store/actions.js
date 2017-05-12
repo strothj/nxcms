@@ -21,12 +21,9 @@ export const loginError = (message = UNKNOWN_ERR) => {
 };
 
 export const login = (username, password) => async dispatch => {
-  try {
-    const { data } = await apiPost('session', { username, password });
-    dispatch(loginSuccess(data.token, data.profile));
-  } catch (e) {
-    dispatch(loginError(e.response.data.message));
-  }
+  apiPost('session', { username, password })
+    .then(({ data }) => dispatch(loginSuccess(data.token, data.profile)))
+    .catch(() => dispatch(loginError('Invalid username or password')));
 };
 
 export const LOGIN_REDIRECT = 'LOGIN_REDIRECT';
