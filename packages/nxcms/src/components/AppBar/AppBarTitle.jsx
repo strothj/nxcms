@@ -11,6 +11,8 @@ const styles = {
   },
   header: {
     margin: 0,
+    fontWeight: 100,
+    lineHeight: '64px',
     [`@media ${breakpoints.tablet}`]: { fontSize: '2.6rem' },
     [`@media ${breakpoints.phoneOnly}`]: {
       display: 'block',

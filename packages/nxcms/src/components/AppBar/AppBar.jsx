@@ -1,28 +1,32 @@
-import { Style } from 'radium';
 import React from 'react';
 import Headroom from 'react-headroom';
 import MaterialAppBar from 'material-ui/AppBar';
-import { breakpoints } from 'styles';
+import { blueGrey600 } from 'material-ui/styles/colors';
+
 import AppBarTitle from './AppBarTitle';
+import MenuButton from './MenuButton';
+import AuthenticationButton from './AuthenticationButton';
 
 const styles = {
-  rules: {
-    mediaQueries: {
-      [`${breakpoints.tablet}`]: {
-        // Hide menu button on larger displays.
-        'button:first-child': { display: 'none !important' },
-      },
-    },
+  appBar: {
+    color: 'green',
   },
+  title: {
+    flex: 'none',
+    fontFamily: 'PT Sans Narrow, sans-serif',
+  },
+  icon: { color: blueGrey600 },
 };
-
-const Title = <AppBarTitle />;
 
 const AppBar = () => (
   <Headroom>
-    <MaterialAppBar className="appbar" title={Title} />
-
-    <Style scopeSelector=".appbar" rules={styles.rules} />
+    <MaterialAppBar
+      style={styles.appBar}
+      title={<AppBarTitle />}
+      titleStyle={styles.title}
+      iconElementLeft={<MenuButton style={styles.icon} />}
+      iconElementRight={<AuthenticationButton style={styles.icon} />}
+    />
   </Headroom>
 );
 
