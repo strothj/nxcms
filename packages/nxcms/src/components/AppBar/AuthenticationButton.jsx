@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import SvgIcon from 'material-ui/SvgIcon';
+import { actions } from 'store';
+import AuthenticationDialog from './AuthenticationDialog';
 
 const LoginIcon = props => (
   <SvgIcon {...props}>
@@ -19,12 +21,17 @@ const LogoutIcon = props => (
 @Radium class AuthenticationButton extends Component {
   state = { open: false };
 
+  handleClick = () => {
+    this.props.dispatch(actions.showLoginDialog());
+  };
+
   render() {
     const Icon = this.props.session ? LoginIcon : LogoutIcon;
 
     return (
-      <IconButton iconStyle={this.props.style}>
+      <IconButton iconStyle={this.props.style} onTouchTap={this.handleClick}>
         <Icon />
+        <AuthenticationDialog />
       </IconButton>
     );
   }

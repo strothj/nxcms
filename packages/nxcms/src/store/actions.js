@@ -4,6 +4,12 @@ const UNKNOWN_ERR = 'internal server error';
 let authToken = null; // eslint-disable-line
 const apiPost = (resource, params) => axios.post(`/api/${resource}`, params);
 
+export const SHOW_LOGIN_DIALOG = 'SHOW_LOGIN_DIALOG';
+export const showLoginDialog = () => ({ type: SHOW_LOGIN_DIALOG });
+
+export const HIDE_LOGIN_DIALOG = 'HIDE_LOGIN_DIALOG';
+export const hideLoginDialog = () => ({ type: HIDE_LOGIN_DIALOG });
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const loginSuccess = (token, profile) => {
   authToken = token;

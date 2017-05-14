@@ -8,6 +8,7 @@ import MenuButton from './MenuButton';
 import AuthenticationButton from './AuthenticationButton';
 
 const styles = {
+  headroom: { zIndex: 100 },
   appBar: {
     color: 'green',
   },
@@ -19,13 +20,14 @@ const styles = {
 };
 
 const AppBar = () => (
-  <Headroom>
+  <Headroom style={styles.headroom}>
     <MaterialAppBar
       style={styles.appBar}
       title={<AppBarTitle />}
       titleStyle={styles.title}
       iconElementLeft={<MenuButton style={styles.icon} />}
       iconElementRight={<AuthenticationButton style={styles.icon} />}
+      zDepth={1}
     />
   </Headroom>
 );
