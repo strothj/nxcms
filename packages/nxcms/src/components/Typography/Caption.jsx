@@ -1,16 +1,16 @@
+import Radium from 'radium';
 import React from 'react';
 
+const styles = {
+  display: 'block',
+  fontSize: 12,
+  letterSpacing: '.09rem',
+};
+
 const Caption = props => (
-  <small style={props.style}>
+  <small style={[styles, props.style]}>
     {props.children}
-    <style jsx>{`
-      small {
-        display: block;
-        font-size: 12px;
-        letter-spacing: .09rem;
-      }
-    `}</style>
   </small>
 );
 
-export default Caption;
+export default Radium(Caption);

@@ -3,31 +3,31 @@ import AppBar from 'components/AppBar';
 import Footer from 'components/Footer';
 import Routes from 'components/Routes';
 
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    minHeight: '100vh',
+  },
+
+  main: {
+    flex: 1,
+    minHeight: 600,
+  },
+};
+
 const Layout = () => (
-  <div>
+  <div style={styles.container}>
     <header>
       <AppBar />
     </header>
-    <main>
+    <main style={styles.main}>
       <Routes />
     </main>
     <footer>
       <Footer />
     </footer>
-
-    <style jsx>{`
-      div {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        min-height: 100vh;
-      }
-
-      main {
-        flex: 1;
-        min-height: 600px;
-      }
-    `}</style>
   </div>
 );
 

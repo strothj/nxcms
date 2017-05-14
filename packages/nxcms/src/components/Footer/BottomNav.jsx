@@ -1,14 +1,10 @@
 import React from 'react';
 
-const BottomNav = () => (
-  <div>
-    <style jsx>{`
-      div {
-        height: 350px;
-        background-color: black;
-      }
-    `}</style>
-  </div>
-);
+const style = {
+  height: 350,
+  backgroundColor: 'black',
+};
+
+const BottomNav = () => <div style={style} />;
 
 export default BottomNav;

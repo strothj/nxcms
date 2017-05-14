@@ -8,6 +8,7 @@ for (let i = 0; i < 1; i += 1)
       key={99 - i}
       src="https://placekitten.com/350/350"
       alt="placeholder"
+      style={{ maxWidth: '100%' }}
     />,
     <br key={i} />
   );
@@ -15,11 +16,6 @@ for (let i = 0; i < 1; i += 1)
 const HomePage = () => (
   <div>
     {tempImgs}
-    <style jsx>{`
-      div :global(img) {
-        max-width: 100%;
-      }
-`}</style>
   </div>
 );
 

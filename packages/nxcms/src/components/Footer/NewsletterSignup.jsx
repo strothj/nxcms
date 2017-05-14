@@ -1,3 +1,4 @@
+import Radium, { Style } from 'radium';
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 
@@ -7,56 +8,54 @@ import NewsletterSignupForm from './NewsletterSignupForm';
 import backgroundImage from './backgroundImage.jpg';
 
 const styles = {
+  section: {
+    position: 'relative',
+    padding: '40px 0',
+    textAlign: 'center',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center bottom',
+    zIndex: 1,
+    backgroundImage: `url(${backgroundImage})`,
+  },
+  sectionAfter: {
+    // Gradient overlay
+    'section::after': {
+      position: 'absolute',
+      content: '""',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundImage: 'linear-gradient(to bottom, transparent 25%, #000 100%)',
+      zIndex: 1,
+    },
+  },
   headline: { paddingBottom: 16 },
   caption: { paddingBottom: 32 },
+  header: { position: 'relative', zIndex: 2 },
+  main: { position: 'relative', zIndex: 2 },
 };
 
 const NewsletterSignup = props => (
   <section
-    style={{
-      backgroundImage: `url(${backgroundImage})`,
-      color: props.muiTheme.palette.alternateTextColor,
-    }}
+    className="newsletter-signup"
+    style={[
+      styles.section,
+      { color: props.muiTheme.palette.alternateTextColor },
+    ]}
   >
     <Container>
-      <header>
+      <header style={styles.header}>
         <Headline style={styles.headline}>{props.primaryText}</Headline>
         <Caption style={styles.caption}>{props.secondaryText}</Caption>
       </header>
 
-      <main>
+      <main style={styles.main}>
         <NewsletterSignupForm />
       </main>
     </Container>
 
-    <style jsx>{`
-      section {
-        position: relative;
-        padding: 40px 0;
-        text-align: center;
-        background-size: cover;
-        background-position: center bottom;
-        z-index: 1;
-      }
-
-      /* Gradient overlay */
-      section::after {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(to bottom, transparent 25%, #000 100%);
-        z-index: 1;
-      }
-
-      /* Position above overlay */
-      header, main {
-        position: relative;
-        z-index: 2;
-      }
-    `}</style>
+    <Style scopeSelector=".newsletter-signup" rules={styles.sectionAfter} />
   </section>
 );
 
@@ -65,4 +64,4 @@ NewsletterSignup.defaultProps = {
   secondaryText: 'See stories about JavaScript in your inbox.',
 };
 
-export default muiThemeable()(NewsletterSignup);
+export default muiThemeable()(Radium(NewsletterSignup));

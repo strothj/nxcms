@@ -6,7 +6,7 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "styled-jsx/babel",
+    "transform-decorators-legacy",
     ["module-resolver", {
       "root": ["./src"],
       "alias": {

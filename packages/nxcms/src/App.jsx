@@ -1,41 +1,40 @@
+import { Style, StyleRoot } from 'radium';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from 'components/Layout';
 import theme from './theme';
 
-const SharedStyles = props => (
-  <div>
-    {props.children}
-    <style jsx global>{`
-      html {
-        box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-      }
+const rules = {
+  html: {
+    boxSizing: 'border-box',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: 14,
+  },
 
-      *, *:before, *:after {
-        box-sizing: inherit;
-      }
+  '*, *:before, *:after': {
+    boxSizing: 'inherit',
+  },
 
-      body {
-        margin: 0;
-      }
+  body: {
+    margin: 0,
+  },
 
-      /* Internet Explorer Flexbox "flex-direction: column" fix */
-      div#root > div { display: flex; }
-    `}</style>
-  </div>
-);
+  // Internet Explorer Flexbox "flex-direction: column" fix
+  '.flex-fix': { display: 'flex' },
+};
 
 const App = () => (
-  <MuiThemeProvider muiTheme={theme}>
-    <SharedStyles>
-      <Router>
-        <Layout />
-      </Router>
-    </SharedStyles>
-  </MuiThemeProvider>
+  <StyleRoot>
+    <MuiThemeProvider muiTheme={theme}>
+      <div className="flex-fix">
+        <Router>
+          <Layout />
+        </Router>
+        <Style rules={rules} />
+      </div>
+    </MuiThemeProvider>
+  </StyleRoot>
 );
 
 export default App;

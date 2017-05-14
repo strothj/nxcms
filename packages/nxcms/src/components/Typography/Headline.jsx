@@ -1,16 +1,16 @@
+import Radium from 'radium';
 import React from 'react';
 
+const styles = {
+  margin: 0,
+  fontSize: 24,
+  letterSpacing: '.1rem',
+};
+
 const Headline = props => (
-  <p style={props.style}>
+  <p style={[styles, props.style]}>
     {props.children}
-    <style jsx>{`
-      p {
-        margin: 0;
-        font-size: 24px;
-        letter-spacing: .1rem;
-      }
-  `}</style>
   </p>
 );
 
-export default Headline;
+export default Radium(Headline);

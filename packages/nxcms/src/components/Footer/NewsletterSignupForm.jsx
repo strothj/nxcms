@@ -1,19 +1,34 @@
+import Radium from 'radium';
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { grey50, grey500 } from 'material-ui/styles/colors';
-
 import { breakpoints } from 'styles';
 
+const RadiumTextField = Radium(TextField);
+
 const styles = {
+  form: {
+    [`@media ${breakpoints.phoneOnly}`]: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
+  emailField: {
+    [`@media ${breakpoints.phoneOnly}`]: {
+      width: '100%',
+      marginBottom: 16,
+    },
+    [`@media ${breakpoints.tablet}`]: { marginRight: 16 },
+  },
   field: { color: grey50 },
   fieldHint: { color: grey500 },
   buttonLabel: { textTransform: 'none' },
 };
 
-class NewsletterSignupForm extends Component {
+@Radium class NewsletterSignupForm extends Component {
   state = {
     confirmDialogOpen: false,
     email: '',
@@ -47,14 +62,14 @@ class NewsletterSignupForm extends Component {
     ];
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <TextField
+      <form style={styles.form} onSubmit={this.handleSubmit}>
+        <RadiumTextField
           value={this.state.email}
           onChange={this.handleEmailChange}
           hintText="Your email address"
           type="email"
           required
-          className="newsletter-email"
+          style={styles.emailField}
           inputStyle={styles.field}
           hintStyle={styles.fieldHint}
         />
@@ -71,26 +86,6 @@ class NewsletterSignupForm extends Component {
         >
           {"You've been subscribed!"}
         </Dialog>
-
-        <style jsx>{`
-          @media ${breakpoints.tablet} {
-            form :global(.newsletter-email) {
-              margin-right: 16px;
-            }
-          }
-
-          @media ${breakpoints.phoneOnly} {
-            form {
-              display: flex;
-              flex-direction: column;
-            }
-
-            form :global(.newsletter-email) {
-              width: 100% !important;
-              margin-bottom: 16px !important;
-            }
-          }
-        `}</style>
       </form>
     );
   }
