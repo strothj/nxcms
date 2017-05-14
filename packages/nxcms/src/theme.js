@@ -1,9 +1,13 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { grey900 } from 'material-ui/styles/colors';
+import * as colors from 'material-ui/styles/colors';
 
 export default getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
+  palette: {
+    primary1Color: colors.blue500,
+  },
   appBar: {
-    color: grey900,
+    color: colors.blueGrey900,
+    height: 70,
   },
 });
