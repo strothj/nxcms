@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 import Footer from 'components/Footer';
 import Routes from 'components/Routes';
@@ -26,7 +27,10 @@ const Layout = () => (
       <Routes />
     </main>
     <footer>
-      <Footer />
+      <Switch>
+        <Route path="/dashboard" />
+        <Route component={Footer} />
+      </Switch>
     </footer>
   </div>
 );
