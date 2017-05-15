@@ -33,7 +33,9 @@ class AuthenticationDialog extends Component {
       nextProps.showLoginDialog !== this.props.showLoginDialog
     )
       setTimeout(() => {
-        this.username.focus();
+        // Check for existence before focusing control. Control will not be
+        // visible during session loading from local storage.
+        if (this.username) this.username.focus();
       }, 200);
   };
 

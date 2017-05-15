@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import { IconMenu, MenuItem } from 'material-ui';
+import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
 import { actions } from 'store';
 import AppBarIconButton from './AppBarIconButton';
 import LogoutIcon from './LogoutIcon';
+
+const Link = props => (
+  <RouterLink {...props} style={{ textDecoration: 'none', color: 'inherit' }} />
+);
 
 class ProfileMenu extends Component {
   showLoginDialog = () => {
@@ -25,6 +31,10 @@ class ProfileMenu extends Component {
         iconButtonElement={<AppBarIconButton icon="moreVert" />}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
+        <MenuItem
+          primaryText={<Link to="/dashboard">Dashboard</Link>}
+          leftIcon={<DashboardIcon />}
+        />
         <MenuItem
           primaryText="Log out"
           leftIcon={<LogoutIcon />}
