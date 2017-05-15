@@ -27,7 +27,7 @@ const AppBar = () => (
       titleStyle={styles.title}
       iconElementLeft={<MenuButton style={styles.icon} />}
       iconElementRight={<AuthenticationButton style={styles.icon} />}
-      zDepth={1}
+      zDepth={2}
     />
   </Headroom>
 );

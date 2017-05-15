@@ -22,11 +22,10 @@ export const loginError = (message = UNKNOWN_ERR) => {
   return { type: LOGIN_ERROR, message };
 };
 
-export const login = (username, password) => async dispatch => {
+export const login = (username, password) => async dispatch =>
   apiPost('session', { username, password })
     .then(({ data }) => dispatch(loginSuccess(data.token, data.profile)))
-    .catch(() => dispatch(loginError('Invalid username or password')));
-};
-
-export const LOGIN_REDIRECT = 'LOGIN_REDIRECT';
-export const loginRedirect = url => ({ type: LOGIN_REDIRECT, url });
+    .catch(e => {
+      dispatch(loginError('Invalid username or password'));
+      throw e;
+    });

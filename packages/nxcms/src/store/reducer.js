@@ -3,7 +3,6 @@ import * as actions from './actions';
 const initialState = {
   profile: null,
   loginError: null,
-  loginRedirect: null,
   showLoginDialog: false,
 };
 
@@ -21,11 +20,6 @@ const handlers = {
   [actions.LOGIN_ERROR]: (state, { message }) => ({
     ...state,
     loginError: message,
-  }),
-
-  [actions.LOGIN_REDIRECT]: (state, { url }) => ({
-    ...state,
-    loginRedirect: url,
   }),
 };
 
