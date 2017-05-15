@@ -1,5 +1,6 @@
 --compilers js:babel-register
 --watch-extensions jsx
+--require regenerator-runtime/runtime
 --require ignore-styles
 --require env-test
 --require src/test-utils/setup.js
