@@ -4,11 +4,14 @@ const initialState = {
   profile: null,
   loginError: null,
   showLoginDialog: false,
+  sessionLoading: false,
 };
 
 const handlers = {
-  [actions.SHOW_LOGIN_DIALOG]: state => ({ ...state, showLoginDialog: true }),
+  [actions.SESSION_LOADING]: state => ({ ...state, sessionLoading: true }),
+  [actions.SESSION_LOADED]: state => ({ ...state, sessionLoading: false }),
 
+  [actions.SHOW_LOGIN_DIALOG]: state => ({ ...state, showLoginDialog: true }),
   [actions.HIDE_LOGIN_DIALOG]: state => ({ ...state, showLoginDialog: false }),
 
   [actions.LOGIN_SUCCESS]: (state, { profile }) => ({

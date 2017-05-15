@@ -129,10 +129,15 @@ class AuthenticationDialog extends Component {
   }
 }
 
-const mapStateToProps = ({ profile, loginError, showLoginDialog }) => ({
+const mapStateToProps = ({
   profile,
   loginError,
   showLoginDialog,
+  sessionLoading,
+}) => ({
+  profile,
+  loginError,
+  showLoginDialog: showLoginDialog && !sessionLoading,
 });
 
 export default connect(mapStateToProps)(withRouter(AuthenticationDialog));

@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from 'components/Layout';
+import SessionLoader from 'components/SessionLoader';
 import theme from './theme';
 
 const rules = {
@@ -31,6 +32,7 @@ const App = () => (
         <Router>
           <Layout />
         </Router>
+        <SessionLoader />
         <Style rules={rules} />
       </div>
     </MuiThemeProvider>
