@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AppBar from 'components/AppBar';
-import Footer from 'components/Footer';
-import Routes from 'components/Routes';
+import DashboardAppBar from './Dashboard/DashboardAppBar';
+import BlogAppBar from './Blog/BlogAppBar';
+import AuthenticationDialog from './AuthenticationDialog';
+import Footer from './Footer';
+import Routes from './Routes';
 
 const styles = {
   container: {
@@ -20,8 +22,12 @@ const styles = {
 
 const Layout = () => (
   <div style={styles.container}>
+    <AuthenticationDialog />
     <header>
-      <AppBar />
+      <Switch>
+        <Route path="/dashboard" component={DashboardAppBar} />
+        <Route component={BlogAppBar} />
+      </Switch>
     </header>
     <main style={styles.main}>
       <Routes />

@@ -2,6 +2,11 @@ import * as client from './client';
 
 const UNKNOWN_ERR = 'internal server error';
 
+export const SHOW_SIDE_BAR = 'SHOW_SIDE_BAR';
+export const showSideBar = () => ({ type: SHOW_SIDE_BAR });
+export const HIDE_SIDE_BAR = 'HIDE_SIDE_BAR';
+export const hideSideBar = () => ({ type: HIDE_SIDE_BAR });
+
 export const SHOW_LOGIN_DIALOG = 'SHOW_LOGIN_DIALOG';
 export const showLoginDialog = () => ({ type: SHOW_LOGIN_DIALOG });
 

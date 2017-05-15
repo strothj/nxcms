@@ -4,10 +4,14 @@ const initialState = {
   profile: null,
   loginError: null,
   showLoginDialog: false,
+  showSideBar: false,
   sessionLoading: false,
 };
 
 const handlers = {
+  [actions.SHOW_SIDE_BAR]: state => ({ ...state, showSideBar: true }),
+  [actions.HIDE_SIDE_BAR]: state => ({ ...state, showSideBar: false }),
+
   [actions.SESSION_LOADING]: state => ({ ...state, sessionLoading: true }),
   [actions.SESSION_LOADED]: state => ({ ...state, sessionLoading: false }),
 

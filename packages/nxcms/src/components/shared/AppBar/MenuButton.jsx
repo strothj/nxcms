@@ -7,9 +7,9 @@ const style = {
   [`@media ${breakpoints.tablet}`]: { display: 'none' },
 };
 
-const MenuButton = () => (
+const MenuButton = props => (
   <div style={style}>
-    <AppBarIconButton icon="menu" />
+    <AppBarIconButton icon="menu" {...props} />
   </div>
 );
 
