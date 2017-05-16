@@ -2,7 +2,7 @@ import React from 'react';
 import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 
 import MenuButtonToolbarGroup from './MenuButtonToolbarGroup';
-import NavigationToolbarGroup from './NavigationToolbarGroup';
+import NavigationToolbarGroup from '../NavigationToolbarGroup';
 
 const toolbarTheme = getMuiTheme({
   palette: { textColor: '#fff' },

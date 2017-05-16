@@ -2,7 +2,10 @@ import Radium from 'radium';
 import React from 'react';
 import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
+import Subheader from 'material-ui/Subheader';
 import MenuItem from 'material-ui/MenuItem';
+import HomeIcon from 'material-ui/svg-icons/action/home';
+import FaceIcon from 'material-ui/svg-icons/action/face';
 
 import { actions } from 'store';
 import { breakpoints } from 'styles';
@@ -27,8 +30,13 @@ const DashboardDrawer = props => (
       open={!props.mobile || props.showSideBar}
       onRequestChange={() => props.dispatch(actions.hideSideBar())}
     >
-      <Link to="/dashboard"><MenuItem>Home</MenuItem></Link>
-      <Link to="/dashboard/profile"><MenuItem>Profile</MenuItem></Link>
+      <Subheader>Dashboard</Subheader>
+      <Link to="/dashboard">
+        <MenuItem leftIcon={<HomeIcon />}>Home</MenuItem>
+      </Link>
+      <Link to="/dashboard/profile">
+        <MenuItem leftIcon={<FaceIcon />}>Profile</MenuItem>
+      </Link>
     </Drawer>
   </div>
 );

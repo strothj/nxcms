@@ -5,6 +5,7 @@ import { breakpoints } from 'styles';
 import Container from '../Container';
 import Drawer from './Drawer';
 import Profile from './Profile';
+import FloatingActionButtons from './FloatingActionButtons';
 
 const styles = {
   main: {
@@ -30,6 +31,9 @@ const Dashboard = () => (
         </Switch>
       </Container>
     </main>
+    <nav>
+      <FloatingActionButtons />
+    </nav>
   </div>
 );
 

@@ -7,12 +7,13 @@ import { breakpoints } from 'styles';
 const styles = {
   phone: { [`@media ${breakpoints.tablet}`]: { display: 'none' } },
   phoneButton: { minWidth: 36 },
+  phoneHidden: { display: 'none' },
   tablet: { [`@media ${breakpoints.phoneOnly}`]: { display: 'none' } },
 };
 
 const ResponsiveToolbarButton = props => (
   <div>
-    <div style={styles.phone}>
+    <div style={props.phoneVisible ? styles.phone : styles.phoneHidden}>
       <FlatButton icon={props.icon} style={styles.phoneButton} />
     </div>
     <div style={styles.tablet}>
