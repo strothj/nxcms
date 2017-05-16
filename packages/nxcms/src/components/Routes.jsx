@@ -7,7 +7,7 @@ import Dashboard from './Dashboard';
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={IndexPage} />
-    <PrivateRoute exact path="/dashboard" component={Dashboard} />
+    <PrivateRoute path="/dashboard" component={Dashboard} />
     <Route component={NotFoundPage} />
   </Switch>
 );

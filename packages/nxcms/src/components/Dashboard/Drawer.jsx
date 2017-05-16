@@ -27,6 +27,7 @@ const DashboardDrawer = props => (
       open={!props.mobile || props.showSideBar}
       onRequestChange={() => props.dispatch(actions.hideSideBar())}
     >
+      <Link to="/dashboard"><MenuItem>Home</MenuItem></Link>
       <Link to="/dashboard/profile"><MenuItem>Profile</MenuItem></Link>
     </Drawer>
   </div>
