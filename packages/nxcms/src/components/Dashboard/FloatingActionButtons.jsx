@@ -1,8 +1,10 @@
 import Radium from 'radium';
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
+import { actions } from 'store';
 import { breakpoints } from 'styles';
 import AccountEditIcon from './svg-icons/AccountEditIcon';
 
@@ -16,11 +18,13 @@ const styles = {
   },
 };
 
-const FloatingActionButtons = () => (
+const FloatingActionButtons = ({ dispatch }) => (
   <div style={styles}>
     <Switch>
       <Route path="/dashboard/profile">
-        <FloatingActionButton>
+        <FloatingActionButton
+          onTouchTap={() => dispatch(actions.showProfileEditDialog())}
+        >
           <AccountEditIcon />
         </FloatingActionButton>
       </Route>
@@ -29,4 +33,6 @@ const FloatingActionButtons = () => (
   </div>
 );
 
-export default Radium(FloatingActionButtons);
+// Need to wrap with withRouter to inform connect's pure component that it
+// should issue a rerender on route changes.
+export default withRouter(connect()(Radium(FloatingActionButtons)));

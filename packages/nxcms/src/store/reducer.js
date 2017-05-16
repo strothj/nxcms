@@ -3,9 +3,10 @@ import * as actions from './actions';
 const initialState = {
   profile: null,
   loginError: null,
+  sessionLoading: false,
   showLoginDialog: false,
   showSideBar: false,
-  sessionLoading: false,
+  showProfileEditDialog: false,
 };
 
 const handlers = {
@@ -17,6 +18,15 @@ const handlers = {
 
   [actions.SHOW_LOGIN_DIALOG]: state => ({ ...state, showLoginDialog: true }),
   [actions.HIDE_LOGIN_DIALOG]: state => ({ ...state, showLoginDialog: false }),
+
+  [actions.SHOW_PROFILE_EDIT_DIALOG]: state => ({
+    ...state,
+    showProfileEditDialog: true,
+  }),
+  [actions.HIDE_PROFILE_EDIT_DIALOG]: state => ({
+    ...state,
+    showProfileEditDialog: false,
+  }),
 
   [actions.LOGIN_SUCCESS]: (state, { profile }) => ({
     ...state,

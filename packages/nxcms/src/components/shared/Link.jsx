@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { withRouter, Link as RouterLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Link = props => (
-  <RouterLink {...props} style={{ textDecoration: 'none', color: 'inherit' }} />
+import { actions } from 'store';
+
+const Link = ({ dispatch, to, children }) => (
+  <RouterLink
+    style={{ textDecoration: 'none', color: 'inherit' }}
+    onClick={() => dispatch(actions.hideSideBar())}
+    to={to}
+  >
+    {children}
+  </RouterLink>
 );
 
-export default Link;
+export default withRouter(connect()(Link));

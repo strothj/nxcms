@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
-import { Dialog, FlatButton, TextField } from 'material-ui';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 import { colors, getMuiTheme, MuiThemeProvider } from 'material-ui/styles';
+
 import { actions } from 'store';
 
 const dialogTheme = getMuiTheme({
@@ -14,9 +17,7 @@ const dialogTheme = getMuiTheme({
 });
 
 const styles = {
-  dialog: {
-    contentStyle: { maxWidth: 400 },
-  },
+  dialog: { contentStyle: { maxWidth: 400 } },
   actionSection: {
     textAlign: 'right',
     padding: 8,

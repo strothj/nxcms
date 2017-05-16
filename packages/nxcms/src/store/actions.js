@@ -9,9 +9,13 @@ export const hideSideBar = () => ({ type: HIDE_SIDE_BAR });
 
 export const SHOW_LOGIN_DIALOG = 'SHOW_LOGIN_DIALOG';
 export const showLoginDialog = () => ({ type: SHOW_LOGIN_DIALOG });
-
 export const HIDE_LOGIN_DIALOG = 'HIDE_LOGIN_DIALOG';
 export const hideLoginDialog = () => ({ type: HIDE_LOGIN_DIALOG });
+
+export const SHOW_PROFILE_EDIT_DIALOG = 'SHOW_PROFILE_EDIT_DIALOG';
+export const showProfileEditDialog = () => ({ type: SHOW_PROFILE_EDIT_DIALOG });
+export const HIDE_PROFILE_EDIT_DIALOG = 'HIDE_PROFILE_EDIT_DIALOG';
+export const hideProfileEditDialog = () => ({ type: HIDE_PROFILE_EDIT_DIALOG });
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const loginSuccess = (profile, token) => {
