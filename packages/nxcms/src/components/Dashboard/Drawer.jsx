@@ -1,12 +1,12 @@
 import Radium from 'radium';
 import React from 'react';
 import { connect } from 'react-redux';
-import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
 import { actions } from 'store';
 import { breakpoints } from 'styles';
+import Link from '../shared/Link';
 
 const styles = {
   mobile: {},
@@ -27,9 +27,7 @@ const DashboardDrawer = props => (
       open={!props.mobile || props.showSideBar}
       onRequestChange={() => props.dispatch(actions.hideSideBar())}
     >
-      <AppBar title="Dashboard" showMenuIconButton={false} {...styles.appBar} />
-      <MenuItem>Menu Item 1</MenuItem>
-      <MenuItem>Menu Item 2</MenuItem>
+      <Link to="/dashboard/profile"><MenuItem>Profile</MenuItem></Link>
     </Drawer>
   </div>
 );

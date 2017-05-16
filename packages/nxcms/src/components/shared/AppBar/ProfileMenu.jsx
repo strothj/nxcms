@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
 import { IconMenu, MenuItem } from 'material-ui';
 import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
+
 import { actions } from 'store';
+import Link from '../Link';
 import AppBarIconButton from './AppBarIconButton';
 import LogoutIcon from './LogoutIcon';
-
-const Link = props => (
-  <RouterLink {...props} style={{ textDecoration: 'none', color: 'inherit' }} />
-);
 
 class ProfileMenu extends Component {
   showLoginDialog = () => {
