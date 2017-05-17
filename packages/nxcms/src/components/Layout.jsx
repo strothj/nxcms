@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import DashboardAppBar from './Dashboard/DashboardAppBar';
+import DashboardAppBar from './Dashboard/AppBar';
 import BlogAppBar from './Blog/BlogAppBar';
 import AuthenticationDialog from './AuthenticationDialog';
 import Footer from './Footer';

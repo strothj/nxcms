@@ -5,7 +5,7 @@ import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup';
 import GlobeIcon from 'material-ui/svg-icons/action/language';
 
 import { actions } from 'store';
-import ResponsiveToolbarButton from './DashboardAppBar/ResponsiveToolbarButton';
+import ResponsiveToolbarButton from './AppBar/ResponsiveToolbarButton';
 import AccountEditIcon from './svg-icons/AccountEditIcon';
 
 const NavigationToolbarGroup = ({ dispatch }) => (

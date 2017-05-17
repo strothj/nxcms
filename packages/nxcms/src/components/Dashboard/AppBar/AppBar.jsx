@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { actions } from 'store';
 import { breakpoints } from 'styles';
-import AppBar from 'components/shared/AppBar';
+import AppBarBase from 'components/shared/AppBar';
 import Toolbar from './Toolbar';
 
 const styles = {
@@ -21,9 +21,9 @@ const styles = {
   },
 };
 
-const DashboardAppBar = ({ dispatch }) => (
+const AppBar = ({ dispatch }) => (
   <div style={styles.dashboard}>
-    <AppBar
+    <AppBarBase
       onLeftIconButtonTouchTap={() => dispatch(actions.showSideBar())}
       iconElementLeft={<Toolbar />}
       iconStyleLeft={styles.toolbarContainer}
@@ -31,4 +31,4 @@ const DashboardAppBar = ({ dispatch }) => (
   </div>
 );
 
-export default connect()(Radium(DashboardAppBar));
+export default connect()(Radium(AppBar));
