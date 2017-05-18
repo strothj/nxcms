@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import mapValues from 'lodash.mapvalues';
 import ResponsiveDialog from 'components/shared/ResponsiveDialog';
+import { Body1 } from 'components/Typography';
 import Fields from './Fields';
 import ActionButtons from './ActionButtons';
 
@@ -56,6 +57,8 @@ class EditUserDialog extends Component {
           />
         }
       >
+        {this.props.errorMessage &&
+          <Body1 style={{ color: 'red' }}>{this.props.errorMessage}</Body1>}
         <Fields
           user={this.props.user}
           userUpdate={this.state.userUpdate}

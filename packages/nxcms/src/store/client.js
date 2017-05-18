@@ -35,3 +35,13 @@ const request = async (method, resource, data) => {
 export const get = (resource, params) => request('get', resource, params);
 
 export const post = (resource, params) => request('post', resource, params);
+
+export const put = (resource, params) => request('put', resource, params);
+
+export const extractError = e => {
+  if (e.response && e.response.data && e.response.data.validationErrors) {
+    const { validationErrors } = e.response.data;
+    e.message = validationErrors[Object.keys(validationErrors)[0]];
+  }
+  return e;
+};

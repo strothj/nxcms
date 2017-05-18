@@ -2,6 +2,7 @@ import * as actions from './actions';
 
 const initialState = {
   profile: null,
+  profileUpdateError: null,
   loginError: null,
   sessionLoading: false,
   showLoginDialog: false,
@@ -26,6 +27,17 @@ const handlers = {
   [actions.HIDE_PROFILE_EDIT_DIALOG]: state => ({
     ...state,
     showProfileEditDialog: false,
+    profileUpdateError: null,
+  }),
+
+  [actions.UPDATE_PROFILE_SUCCESS]: (state, { profile }) => ({
+    ...state,
+    profile,
+    profileUpdateError: null,
+  }),
+  [actions.UPDATE_PROFILE_ERROR]: (state, { message }) => ({
+    ...state,
+    profileUpdateError: message,
   }),
 
   [actions.LOGIN_SUCCESS]: (state, { profile }) => ({

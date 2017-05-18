@@ -26,7 +26,7 @@ class VerifyField extends Component {
         if (!prevState.errorText) this.props.onInvalid();
       } else {
         newState.errorText = '';
-        this.props.onChange({ [name]: value });
+        this.props.onChange({ [this.props.name]: value });
         this.props.onValid();
       }
       return newState;

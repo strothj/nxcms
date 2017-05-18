@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import * as client from './client';
 
 const UNKNOWN_ERR = 'internal server error';
@@ -63,4 +64,26 @@ export const login = (username, password) => async dispatch => {
 export const logout = () => {
   localStorage.removeItem('session');
   document.location.href = '/';
+};
+
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const updateProfileSuccess = profile => ({
+  type: UPDATE_PROFILE_SUCCESS,
+  profile,
+});
+export const UPDATE_PROFILE_ERROR = 'UPDATE_PROFILE_ERROR';
+export const updateProfileError = message => ({
+  type: UPDATE_PROFILE_ERROR,
+  message,
+});
+export const updateProfile = userUpdate => async dispatch => {
+  try {
+    await client.put(`users/${userUpdate._id}`, userUpdate);
+    dispatch(updateProfileSuccess(userUpdate));
+    dispatch(hideProfileEditDialog());
+  } catch (e) {
+    client.extractError(e);
+    dispatch(updateProfileError(e.message));
+    throw e;
+  }
 };

@@ -9,14 +9,20 @@ const ProfileEditDialog = props => (
     user={props.user}
     open={props.open}
     title="Edit Profile"
+    errorMessage={props.errorMessage}
     onCancel={() => props.dispatch(actions.hideProfileEditDialog())}
-    onSubmit={u => console.log(u.toString())}
+    onSubmit={u => props.dispatch(actions.updateProfile(u))}
   />
 );
 
-const mapStateToProps = ({ profile, showProfileEditDialog }) => ({
+const mapStateToProps = ({
+  profile,
+  profileUpdateError,
+  showProfileEditDialog,
+}) => ({
   user: profile,
   open: showProfileEditDialog,
+  errorMessage: profileUpdateError,
 });
 
 export default connect(mapStateToProps)(ProfileEditDialog);
