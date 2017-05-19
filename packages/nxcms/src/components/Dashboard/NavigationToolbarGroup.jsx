@@ -31,18 +31,22 @@ const NavigationToolbarGroup = ({ dispatch, selectedArticle }) => (
       </Route>
       <Route exact path="/dashboard/posts">
         <div style={{ display: 'flex' }}>
-          <ResponsiveToolbarButton
-            label="New Post"
-            icon={<InsertDriveFileIcon />}
-            phoneVisible
-          />
+          <Link to="/dashboard/posts/new">
+            <ResponsiveToolbarButton
+              label="New Post"
+              icon={<InsertDriveFileIcon />}
+              phoneVisible
+            />
+          </Link>
           {selectedArticle &&
             <div style={{ display: 'flex' }}>
-              <ResponsiveToolbarButton
-                label="Edit"
-                icon={<ModeEditIcon />}
-                phoneVisible
-              />
+              <Link to={`/dashboard/posts/${selectedArticle}`}>
+                <ResponsiveToolbarButton
+                  label="Edit"
+                  icon={<ModeEditIcon />}
+                  phoneVisible
+                />
+              </Link>
               <ResponsiveToolbarButton
                 label="Delete"
                 icon={<DeleteForeverIcon />}

@@ -7,6 +7,7 @@ import Drawer from './Drawer';
 import Profile from './Profile';
 import ProfileEditDialog from './ProfileEditDialog';
 import Posts from './Posts';
+import PostEditor from './PostEditor';
 import FloatingActionButtons from './FloatingActionButtons';
 
 const styles = {
@@ -29,7 +30,9 @@ const Dashboard = () => (
       <Container>
         <Switch>
           <Route path="/dashboard/profile" component={Profile} />
-          <Route path="/dashboard/posts" component={Posts} />
+          <Route exact path="/dashboard/posts" component={Posts} />
+          <Route exact path="/dashboard/posts/new" component={PostEditor} />
+          <Route path="/dashboard/posts/:id" component={PostEditor} />
           <Route render={() => <p>Dashboard</p>} />
         </Switch>
       </Container>

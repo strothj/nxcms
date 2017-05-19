@@ -50,7 +50,7 @@ class Posts extends Component {
             <TableHeaderColumn>Slug</TableHeaderColumn>
           </TableRow>
         </TableHeader>
-        <TableBody displayRowCheckbox={false}>
+        <TableBody displayRowCheckbox={false} deselectOnClickaway={false}>
           {this.props.articles &&
             this.props.articles.map(a => (
               <TableRow key={a._id}>
