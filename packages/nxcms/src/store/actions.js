@@ -103,6 +103,7 @@ export const getArticles = () => async dispatch => {
     dispatch(getArticlesSuccess(articles));
   } catch (e) {
     dispatch(getArticlesError(e.message));
+    throw e;
   }
 };
 
@@ -116,8 +117,32 @@ export const getUsers = () => async dispatch => {
     dispatch(getUsersSuccess(users));
   } catch (e) {
     dispatch(getUsersError(e.message));
+    throw e;
   }
 };
 
 export const SELECT_ARTICLE = 'SELECT_ARTICLE';
 export const selectArticle = id => ({ type: SELECT_ARTICLE, id });
+
+export const EDIT_ARTICLE_SUCCESS = 'EDIT_ARTICLE_SUCCESS';
+export const editArticleSuccess = () => ({
+  type: EDIT_ARTICLE_SUCCESS,
+});
+export const EDIT_ARTICLE_ERROR = 'EDIT_ARTICLE_ERROR';
+export const editArticleError = message => ({
+  type: EDIT_ARTICLE_ERROR,
+  message,
+});
+export const editArticle = article => async dispatch => {
+  try {
+    const method = article._id ? 'put' : 'post';
+    const path = article._id ? `/${article._id}` : '';
+    await client[method](`articles${path}`, article);
+    dispatch(editArticleSuccess());
+    dispatch(getArticles());
+  } catch (e) {
+    client.extractError(e);
+    dispatch(editArticleError(e));
+    throw e;
+  }
+};

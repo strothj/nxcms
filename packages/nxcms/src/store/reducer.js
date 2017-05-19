@@ -13,6 +13,7 @@ const initialState = {
   users: null,
   getUsersError: null,
   selectedArticle: null,
+  editArticleError: null,
 };
 
 const handlers = {
@@ -79,6 +80,15 @@ const handlers = {
   [actions.SELECT_ARTICLE]: (state, { id }) => ({
     ...state,
     selectedArticle: id,
+  }),
+
+  [actions.EDIT_ARTICLE_SUCCESS]: state => ({
+    ...state,
+    editArticleError: null,
+  }),
+  [actions.EDIT_ARTICLE_ERROR]: (state, message) => ({
+    ...state,
+    editArticleError: message,
   }),
 };
 
