@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -21,15 +22,25 @@ class Posts extends Component {
     }
   }
 
-  getUsernameFromArticleID(id) {
+  getUsernameFromArticleID = id => {
     if (!this.props.users) return '';
     const user = this.props.users.find(u => u._id === id);
     return user ? user.username : 'Unassigned';
-  }
+  };
+
+  setSelected = selectedRows => {
+    this.props.dispatch(
+      actions.selectArticle(
+        selectedRows.length === 0
+          ? null
+          : this.props.articles[selectedRows[0]]._id
+      )
+    );
+  };
 
   render() {
     return (
-      <Table>
+      <Table onRowSelection={this.setSelected}>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>
             <TableHeaderColumn>Publish Date</TableHeaderColumn>
