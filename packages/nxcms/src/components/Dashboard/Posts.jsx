@@ -20,6 +20,7 @@ class Posts extends Component {
     if (this.props.profile.isAdmin && !this.props.users) {
       this.props.dispatch(actions.getUsers());
     }
+    this.setSelected([]);
   }
 
   getUsernameFromArticleID = id => {

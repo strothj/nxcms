@@ -1,9 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Prompt } from 'react-router-dom';
-import { Form, Text, Textarea } from 'react-form';
+import Tab from 'material-ui/Tabs/Tab';
+
 import { actions } from 'store';
+import Container from 'components/Container';
+import DockedTabs from './DockedTabs';
+import Form from './Form';
 import validate from './validate';
 
 class PostEditor extends Component {
@@ -19,9 +22,7 @@ class PostEditor extends Component {
     if (!this.props.articles) this.props.dispatch(actions.getArticles());
   }
 
-  // eslint-disable-next-line
-  onSubmit = async (values) => {
-    // console.log(values); // eslint-disable-line no-console
+  onSubmit = async values => {
     try {
       await this.props.dispatch(actions.editArticle(values));
       this.setState({ hasMutations: false });
@@ -29,7 +30,7 @@ class PostEditor extends Component {
     } catch (e) {
       console.log(e); // eslint-disable-line no-console
     }
-  }
+  };
 
   loadInitialValues = () => {
     if (!this.state.selectedArticle) return {};
@@ -55,41 +56,21 @@ class PostEditor extends Component {
   render() {
     if (!this.props.articles) return <div />;
     return (
-      <Form
-        defaultValues={this.loadInitialValues()}
-        onSubmit={this.onSubmit}
-        onChange={this.markPendingChanges}
-        validate={validate}
-      >
-        {({ submitForm }) => (
-          <div>
-            {this.state.hasMutations &&
-              <Prompt message="You have unsaved changes, are you sure you want to leave?" />}
-
-            <form onSubmit={submitForm}>
-              {this.props.errorMessage &&
-                <p>Error: {this.props.errorMessage}</p>}
-              Title: <Text field="title" />
-              Slug: <Text field="slug" />
-              Publish Date: <Text field="publishDate" />
-              Editor: <Text field="editor" />
-              Header Image URL: <Text field="headerImageURL" />
-              Header Image Attribution URL:
-              <Text field="headerImageAttributionURL" />
-              Header Image Attribution Text:
-              <Text field="headerImageAttributionText" />
-              Tags: <Text field="tags" />
-              Category: <Text field="category" />
-              Synopsis: <Text field="synopsis" />
-              Youtube ID: <Text field="youtubeVideoID" />
-              Content: <Textarea field="content" />
-              <button type="submit" disabled={!this.state.hasMutations}>
-                Submit
-              </button>
-            </form>
-          </div>
-        )}
-      </Form>
+      <DockedTabs>
+        <Tab label="Edit">
+          <Container>
+            <Form
+              defaultValues={this.loadInitialValues()}
+              onSubmit={this.onSubmit}
+              onChange={this.markPendingChanges}
+              validate={validate}
+            />
+          </Container>
+        </Tab>
+        <Tab label="Preview">
+          test
+        </Tab>
+      </DockedTabs>
     );
   }
 }

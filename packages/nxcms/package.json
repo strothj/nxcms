@@ -8,7 +8,7 @@
     "blueimp-md5": "^2.7.0",
     "caniuse-api": "^1.5.2",
     "lodash.mapvalues": "^4.6.0",
-    "material-ui": "^0.18.0",
+    "material-ui": "^0.18.1",
     "prop-types": "^15.5.10",
     "radium": "^0.18.2",
     "react": "^15.5.4",
