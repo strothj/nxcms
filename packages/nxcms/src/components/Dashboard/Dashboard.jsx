@@ -6,6 +6,7 @@ import Container from '../Container';
 import Drawer from './Drawer';
 import Profile from './Profile';
 import ProfileEditDialog from './ProfileEditDialog';
+import Posts from './Posts';
 import FloatingActionButtons from './FloatingActionButtons';
 
 const styles = {
@@ -27,8 +28,9 @@ const Dashboard = () => (
     <main style={styles.main}>
       <Container>
         <Switch>
-          <Route exact path="/dashboard" render={() => <p>Dashboard</p>} />
           <Route path="/dashboard/profile" component={Profile} />
+          <Route path="/dashboard/posts" component={Posts} />
+          <Route render={() => <p>Dashboard</p>} />
         </Switch>
       </Container>
     </main>

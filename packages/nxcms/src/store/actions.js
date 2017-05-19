@@ -87,3 +87,34 @@ export const updateProfile = userUpdate => async dispatch => {
     throw e;
   }
 };
+
+export const GET_ARTICLES_SUCCESS = 'GET_ARTICLES_SUCCESS';
+export const getArticlesSuccess = articles => ({
+  type: GET_ARTICLES_SUCCESS,
+  articles,
+});
+
+export const GET_ARTICLES_ERROR = 'GET_ARTICLES_ERROR';
+export const getArticlesError = () => ({ type: GET_ARTICLES_ERROR });
+
+export const getArticles = () => async dispatch => {
+  try {
+    const articles = await client.get('articles');
+    dispatch(getArticlesSuccess(articles));
+  } catch (e) {
+    dispatch(getArticlesError(e.message));
+  }
+};
+
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const getUsersSuccess = users => ({ type: GET_USERS_SUCCESS, users });
+export const GET_USERS_ERROR = 'GET_USERS_ERROR';
+export const getUsersError = message => ({ type: GET_USERS_ERROR, message });
+export const getUsers = () => async dispatch => {
+  try {
+    const users = await client.get('users');
+    dispatch(getUsersSuccess(users));
+  } catch (e) {
+    dispatch(getUsersError(e.message));
+  }
+};

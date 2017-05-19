@@ -41,7 +41,9 @@ const DashboardDrawer = props => (
       <Link to="/dashboard/profile">
         <MenuItem leftIcon={<FaceIcon />}>Profile</MenuItem>
       </Link>
-      <MenuItem leftIcon={<TextFieldsIcon />}>Posts</MenuItem>
+      <Link to="/dashboard/posts">
+        <MenuItem leftIcon={<TextFieldsIcon />}>Posts</MenuItem>
+      </Link>
       {props.profile.isAdmin &&
         <div style={{ paddingTop: 32 }}>
           <Divider />

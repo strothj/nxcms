@@ -8,6 +8,10 @@ const initialState = {
   showLoginDialog: false,
   showSideBar: false,
   showProfileEditDialog: false,
+  articles: null,
+  getArticlesError: null,
+  users: null,
+  getUsersError: null,
 };
 
 const handlers = {
@@ -49,6 +53,26 @@ const handlers = {
   [actions.LOGIN_ERROR]: (state, { message }) => ({
     ...state,
     loginError: message,
+  }),
+
+  [actions.GET_ARTICLES_SUCCESS]: (state, { articles }) => ({
+    ...state,
+    articles,
+    getArticlesError: null,
+  }),
+  [actions.GET_ARTICLES_ERROR]: (state, { message }) => ({
+    ...state,
+    getArticlesError: message,
+  }),
+
+  [actions.GET_USERS_SUCCESS]: (state, { users }) => ({
+    ...state,
+    users,
+    getUsersError: null,
+  }),
+  [actions.GET_USERS_ERROR]: (state, { message }) => ({
+    ...state,
+    getUsersError: message,
   }),
 };
 
