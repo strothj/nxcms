@@ -8,6 +8,7 @@ import Container from 'components/Container';
 import DockedTabs from './DockedTabs';
 import Form from './Form';
 import validate from './validate';
+import { nullEmpties, removeEmpties } from './cleanValues';
 
 class PostEditor extends Component {
   constructor(props) {
@@ -23,25 +24,16 @@ class PostEditor extends Component {
   }
 
   onSubmit = async values => {
-    try {
-      await this.props.dispatch(actions.editArticle(values));
-      this.setState({ hasMutations: false });
-      this.props.history.push('/dashboard/posts');
-    } catch (e) {
-      console.log(e); // eslint-disable-line no-console
-    }
+    await this.props.dispatch(actions.editArticle(nullEmpties(values)));
+    this.setState({ hasMutations: false });
+    this.props.history.push('/dashboard/posts');
   };
 
   loadInitialValues = () => {
     if (!this.state.selectedArticle) return {};
-    return this.props.articles.find(a => a._id === this.state.selectedArticle);
-  };
-
-  removeEmptyFields = values => {
-    Object.keys(values).forEach(k => {
-      if (!values[k]) delete values[k]; // eslint-disable-line no-param-reassign
-    });
-    return values;
+    return removeEmpties(
+      this.props.articles.find(a => a._id === this.state.selectedArticle)
+    );
   };
 
   markPendingChanges = (state, props, initial) => {
@@ -58,14 +50,18 @@ class PostEditor extends Component {
     return (
       <DockedTabs>
         <Tab label="Edit">
-          <Container>
-            <Form
-              defaultValues={this.loadInitialValues()}
-              onSubmit={this.onSubmit}
-              onChange={this.markPendingChanges}
-              validate={validate}
-            />
-          </Container>
+          <article>
+            <Container>
+              <Form
+                defaultValues={this.loadInitialValues()}
+                onSubmit={this.onSubmit}
+                onChange={this.markPendingChanges}
+                validate={validate}
+                initiallyOpenInfoSection={!this.state.selectedArticle}
+                hasMutations={this.state.hasMutations}
+              />
+            </Container>
+          </article>
         </Tab>
         <Tab label="Preview">
           test

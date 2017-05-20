@@ -1,4 +1,5 @@
 import validate from 'validate.js';
+import { nullEmpties } from './cleanValues';
 
 const singleWord = /^[a-z]+$/;
 
@@ -27,7 +28,10 @@ const headerImageAttributionText = {
 };
 
 const slug = {
-  format: { pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/ },
+  format: {
+    pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    message: 'can only contain lowercase letters, numbers, and dashes',
+  },
   length: { maximum: 200 },
   presence: true,
 };
@@ -48,24 +52,26 @@ const youtubeVideoID = { length: { minimum: 4, maximum: 30 } };
 
 const content = { length: { minimum: 10 }, presence: true };
 
+const constraints = {
+  editor,
+  publishDate,
+  title,
+  headerImageURL,
+  headerImageAttributionURL,
+  headerImageAttributionText,
+  slug,
+  category,
+  tags,
+  synopsis,
+  youtubeVideoID,
+  content,
+};
+
 export default values => {
+  const cleanedValues = nullEmpties(values);
   const errors = {};
-  Object.entries(
-    validate(values, {
-      editor,
-      publishDate,
-      title,
-      headerImageURL,
-      headerImageAttributionURL,
-      headerImageAttributionText,
-      slug,
-      category,
-      tags,
-      synopsis,
-      youtubeVideoID,
-      content,
-    }) || {}
-  ).forEach(kv => {
+  Object.entries(validate(cleanedValues, constraints) || {}).forEach(kv => {
+    // Flatten returned validation error arrays
     errors[kv[0]] = kv[1][0];
   });
   return errors;

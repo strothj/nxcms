@@ -1,6 +1,10 @@
 import React from 'react';
 import { Prompt } from 'react-router-dom';
 import { Form as ReactForm, Text, Textarea } from 'react-form';
+import SplitContainer from '../../SplitContainer';
+import ToggleSection from './ToggleSection';
+import MaterialTextField from './MaterialTextField';
+import SlugField from './SlugField';
 
 const Form = props => (
   <ReactForm
@@ -9,26 +13,39 @@ const Form = props => (
     onChange={props.onChange}
     validate={props.validate}
   >
-    {({ submitForm }) => (
+    {({ submitForm, getValue }) => (
       <div>
         {props.hasMutations &&
           <Prompt message="You have unsaved changes, are you sure you want to leave?" />}
 
         <form onSubmit={submitForm}>
-          {props.errorMessage && <p>Error: {props.errorMessage}</p>}
-          Title: <Text field="title" />
-          Slug: <Text field="slug" />
-          Publish Date: <Text field="publishDate" />
-          Editor: <Text field="editor" />
-          Header Image URL: <Text field="headerImageURL" />
-          Header Image Attribution URL:
-          <Text field="headerImageAttributionURL" />
-          Header Image Attribution Text:
-          <Text field="headerImageAttributionText" />
-          Tags: <Text field="tags" />
-          Category: <Text field="category" />
-          Synopsis: <Text field="synopsis" />
-          Youtube ID: <Text field="youtubeVideoID" />
+          <ToggleSection
+            label="Post Info"
+            initiallyOpen={props.initiallyOpenInfoSection}
+          >
+            {props.errorMessage && <p>Error: {props.errorMessage}</p>}
+
+            <SplitContainer>
+              <div>
+                <MaterialTextField field="title" floatingLabelText="Title" />
+                <SlugField titleValue={getValue('title')} />
+              </div>
+              <div>
+                Publish Date: <Text field="publishDate" />
+                Editor: <Text field="editor" />
+              </div>
+            </SplitContainer>
+
+            Header Image URL: <Text field="headerImageURL" />
+            Header Image Attribution URL:
+            <Text field="headerImageAttributionURL" />
+            Header Image Attribution Text:
+            <Text field="headerImageAttributionText" />
+            Tags: <Text field="tags" />
+            Category: <Text field="category" />
+            Synopsis: <Text field="synopsis" />
+            Youtube ID: <Text field="youtubeVideoID" />
+          </ToggleSection>
           Content: <Textarea field="content" />
           <button type="submit" disabled={!props.hasMutations}>
             Submit

@@ -8,7 +8,7 @@ const styles = {
   tabsContainer: {
     position: 'fixed',
     left: 0,
-    top: 70,
+    top: 70 /* Appbar */,
     bottom: 0,
     right: 0,
     [`@media ${breakpoints.tablet}`]: { left: 256 },
@@ -21,7 +21,7 @@ const styles = {
 
   // Provide the ability to scroll content beneath the toolbars.
   tabBodyWrapper: {
-    paddingTop: 48, // Match the top padding of the rest of the dashboard.
+    paddingTop: 0,
     overflowY: 'auto',
     height: 'calc(100vh - 118px)',
   },
