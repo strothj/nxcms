@@ -8,14 +8,15 @@ validate.validators.tags = value => {
   if (!validate.isArray(value)) return 'must be an array';
   if (value.length === 0) return 'can not be empty';
   for (let i = 0; i < value.length; i += 1) {
-    if (!singleWord.test(value[i])) return 'must be lowercase single word';
+    if (!singleWord.test(value[i]))
+      return 'must be single words with letters only';
   }
   return null;
 };
 
 const editor = { length: { is: 24 }, presence: true }; // Mongoose ID hex length
 
-const publishDate = { numericality: { noStrings: true } };
+const publishDate = {};
 
 const title = { length: { minimum: 4, maximum: 100 }, presence: true };
 
@@ -74,5 +75,7 @@ export default values => {
     // Flatten returned validation error arrays
     errors[kv[0]] = kv[1][0];
   });
+  console.log(errors); // eslint-disable-line no-console
+  console.log(cleanedValues.publishDate); // eslint-disable-line no-console
   return errors;
 };

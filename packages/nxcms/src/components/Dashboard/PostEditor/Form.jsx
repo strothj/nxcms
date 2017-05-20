@@ -8,6 +8,7 @@ import TextField from './TextField';
 import SlugField from './SlugField';
 import PublishDateField from './PublishDateField';
 import EditorSelectField from './EditorSelectField';
+import TagsField from './TagsField';
 
 const Form = props => (
   <ReactForm
@@ -54,7 +55,7 @@ const Form = props => (
               floatingLabelText="Header Image Attribution Text"
             />
 
-            Tags: <Text field="tags" />
+            <TagsField />
             Category: <Text field="category" />
             Synopsis: <Text field="synopsis" />
             Youtube ID: <Text field="youtubeVideoID" />

@@ -3,6 +3,8 @@ export const nullEmpties = values => {
   Object.keys(values).forEach(k => {
     cleaned[k] = values[k] || null;
   });
+  if (Array.isArray(cleaned.tags) && cleaned.tags.length === 0)
+    cleaned.tags = null;
   return cleaned;
 };
 
