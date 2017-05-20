@@ -10,6 +10,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import moment from 'moment';
 import { actions } from 'store';
 
 class Posts extends Component {
@@ -56,7 +57,9 @@ class Posts extends Component {
             this.props.articles.map(a => (
               <TableRow key={a._id}>
                 <TableRowColumn>
-                  {a.publishDate || 'Unpublished'}
+                  {a.publishDate
+                    ? moment(a.publishDate).format('YYYY-MM-DD')
+                    : 'Unpublished'}
                 </TableRowColumn>
                 {this.props.profile.isAdmin &&
                   <TableRowColumn>

@@ -5,6 +5,7 @@ import SplitContainer from '../../SplitContainer';
 import ToggleSection from './ToggleSection';
 import MaterialTextField from './MaterialTextField';
 import SlugField from './SlugField';
+import PublishDateField from './PublishDateField';
 
 const Form = props => (
   <ReactForm
@@ -31,7 +32,7 @@ const Form = props => (
                 <SlugField titleValue={getValue('title')} />
               </div>
               <div>
-                Publish Date: <Text field="publishDate" />
+                <PublishDateField />
                 Editor: <Text field="editor" />
               </div>
             </SplitContainer>
