@@ -93,10 +93,8 @@ export const getArticlesSuccess = articles => ({
   type: GET_ARTICLES_SUCCESS,
   articles,
 });
-
 export const GET_ARTICLES_ERROR = 'GET_ARTICLES_ERROR';
 export const getArticlesError = () => ({ type: GET_ARTICLES_ERROR });
-
 export const getArticles = () => async dispatch => {
   try {
     const articles = await client.get('articles');

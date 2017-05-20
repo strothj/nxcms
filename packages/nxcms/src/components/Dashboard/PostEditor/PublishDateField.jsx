@@ -7,24 +7,24 @@ import moment from 'moment';
 class PublishDateControl extends Component {
   setDate = (e, date) => {
     const epoch = parseInt(moment(date).format('x'), 10);
-    this.props.api.setValue(epoch);
+    this.props.formApi.setValue(epoch);
   };
 
   getDate = () => {
-    if (!this.props.api.getValue()) return null;
-    return moment(this.props.api.getValue()).toDate();
+    if (!this.props.formApi.getValue()) return null;
+    return moment(this.props.formApi.getValue()).toDate();
   };
 
   togglePublish = (e, checked) => {
     if (!checked) {
-      this.props.api.setValue(null);
+      this.props.formApi.setValue(null);
       return;
     }
     this.setDate(null, new Date());
   };
 
   render() {
-    const { getValue } = this.props.api;
+    const { getValue } = this.props.formApi;
 
     return (
       <div>
@@ -48,7 +48,7 @@ class PublishDateControl extends Component {
 
 const PublishDateField = () => (
   <FormField field="publishDate">
-    {api => <PublishDateControl api={api} />}
+    {formApi => <PublishDateControl formApi={formApi} />}
   </FormField>
 );
 

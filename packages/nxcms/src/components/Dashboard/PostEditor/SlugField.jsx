@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormField } from 'react-form';
 import getSlug from 'speakingurl';
-import MaterialTextField from './MaterialTextField';
+import TextField from './TextField';
 
 class SlugGenerator extends Component {
   componentWillReceiveProps(nextProps) {
@@ -20,7 +20,7 @@ const SlugField = ({ titleValue }) => (
   <FormField field="slug">
     {({ setValue }) => (
       <SlugGenerator titleValue={titleValue} setValue={setValue}>
-        <MaterialTextField field="slug" floatingLabelText="Slug" />
+        <TextField field="slug" floatingLabelText="Slug" />
       </SlugGenerator>
     )}
   </FormField>

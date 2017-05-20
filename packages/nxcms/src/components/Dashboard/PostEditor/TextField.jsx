@@ -1,11 +1,11 @@
 import React from 'react';
 import { FormField } from 'react-form';
-import TextField from 'material-ui/TextField';
+import MaterialTextField from 'material-ui/TextField';
 
-const MaterialTextField = ({ field, ...props }) => (
+const TextField = ({ field, ...props }) => (
   <FormField field={field}>
     {({ setValue, getValue, setTouched, getTouched, getError }) => (
-      <TextField
+      <MaterialTextField
         name={field}
         value={getValue() || ''}
         onChange={e => setValue(e.target.value)}
@@ -18,4 +18,4 @@ const MaterialTextField = ({ field, ...props }) => (
   </FormField>
 );
 
-export default MaterialTextField;
+export default TextField;

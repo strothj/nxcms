@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Prompt } from 'react-router-dom';
 import { Form as ReactForm, Text, Textarea } from 'react-form';
 import SplitContainer from '../../SplitContainer';
 import ToggleSection from './ToggleSection';
-import MaterialTextField from './MaterialTextField';
+import TextField from './TextField';
 import SlugField from './SlugField';
 import PublishDateField from './PublishDateField';
+import EditorSelectField from './EditorSelectField';
 
 const Form = props => (
   <ReactForm
@@ -28,20 +30,30 @@ const Form = props => (
 
             <SplitContainer>
               <div>
-                <MaterialTextField field="title" floatingLabelText="Title" />
+                <TextField field="title" floatingLabelText="Title" />
                 <SlugField titleValue={getValue('title')} />
               </div>
               <div>
                 <PublishDateField />
-                Editor: <Text field="editor" />
+                <EditorSelectField isAdmin={props.isAdmin} />
               </div>
             </SplitContainer>
 
-            Header Image URL: <Text field="headerImageURL" />
-            Header Image Attribution URL:
-            <Text field="headerImageAttributionURL" />
-            Header Image Attribution Text:
-            <Text field="headerImageAttributionText" />
+            <TextField
+              field="headerImageURL"
+              floatingLabelText="Header Image URL"
+            />
+
+            <TextField
+              field="headerImageAttributionURL"
+              floatingLabelText="Header Image Attribution URL"
+            />
+
+            <TextField
+              field="headerImageAttributionText"
+              floatingLabelText="Header Image Attribution Text"
+            />
+
             Tags: <Text field="tags" />
             Category: <Text field="category" />
             Synopsis: <Text field="synopsis" />
@@ -57,4 +69,6 @@ const Form = props => (
   </ReactForm>
 );
 
-export default Form;
+const mapStateToProps = ({ profile }) => ({ isAdmin: profile.isAdmin });
+
+export default connect(mapStateToProps)(Form);
