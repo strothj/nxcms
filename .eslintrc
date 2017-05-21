@@ -6,14 +6,13 @@
   },
   "rules": {
     "react/prop-types": "off",
-    "react/jsx-indent-props": "off",
-    "react/jsx-closing-bracket-location": "off",
     "react/jsx-filename-extension": ["error", {
       "extensions": [ ".jsx", ".spec.js" ]
     }],
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": ["src/**/*.spec.js"]
-    }],
+    "no-underscore-dangle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-unused-expressions": "off",
+    "chai-friendly/no-unused-expressions": "error",
     "prettier/prettier": ["error", {
       "singleQuote": true,
       "trailingComma": "es5"
@@ -24,6 +23,7 @@
     "prettier"
   ],
   "plugins": [
+    "chai-friendly",
     "prettier"
   ],
   "settings": {

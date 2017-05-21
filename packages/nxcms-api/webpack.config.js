@@ -78,7 +78,7 @@ const babelConfigWithTreeShaking = () => {
 };
 
 const devESLintValidation = isDevMode =>
-  (isDevMode
+  isDevMode
     ? [
         {
           enforce: 'pre',
@@ -87,7 +87,7 @@ const devESLintValidation = isDevMode =>
           loader: 'eslint-loader',
         },
       ]
-    : []);
+    : [];
 
 const devHMRPlugins = isDevMode => {
   if (!isDevMode) return [];

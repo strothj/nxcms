@@ -1,21 +1,17 @@
 language: node_js
 node_js: '6'
-env:
-- CXX=g++-4.8
 services:
 - mongodb
 addons:
   apt:
     sources:
     - mongodb-3.2-precise
-    - ubuntu-toolchain-r-test
     packages:
     - mongodb-org-server
-    - g++-4.8
 script:
+- yarn bootstrap
 - yarn lint
 - yarn test
-- yarn build
 deploy:
   provider: heroku
   api_key:
