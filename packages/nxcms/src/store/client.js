@@ -38,6 +38,8 @@ export const post = (resource, params) => request('post', resource, params);
 
 export const put = (resource, params) => request('put', resource, params);
 
+export const del = (resource, params) => request('delete', resource, params);
+
 export const extractError = e => {
   if (e.response && e.response.data && e.response.data.validationErrors) {
     const { validationErrors } = e.response.data;

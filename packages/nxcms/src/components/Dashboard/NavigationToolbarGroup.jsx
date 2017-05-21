@@ -6,10 +6,10 @@ import GlobeIcon from 'material-ui/svg-icons/action/language';
 import InsertDriveFileIcon
   from 'material-ui/svg-icons/editor/insert-drive-file';
 import ModeEditIcon from 'material-ui/svg-icons/editor/mode-edit';
-import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 
 import { actions } from 'store';
 import ResponsiveToolbarButton from './AppBar/ResponsiveToolbarButton';
+import DeletePostToolbarButton from './AppBar/DeletePostToolbarButton';
 import AccountEditIcon from './svg-icons/AccountEditIcon';
 
 const NavigationToolbarGroup = ({ dispatch, selectedArticle }) => (
@@ -47,11 +47,7 @@ const NavigationToolbarGroup = ({ dispatch, selectedArticle }) => (
                   phoneVisible
                 />
               </Link>
-              <ResponsiveToolbarButton
-                label="Delete"
-                icon={<DeleteForeverIcon />}
-                phoneVisible
-              />
+              <DeletePostToolbarButton />
             </div>}
         </div>
       </Route>

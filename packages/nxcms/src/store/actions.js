@@ -144,3 +144,20 @@ export const editArticle = article => async dispatch => {
     throw e;
   }
 };
+
+export const DELETE_ARTICLE_SUCCESS = 'DELETE_ARTICLE_SUCCESS';
+export const deleteArticleSuccess = () => ({ type: DELETE_ARTICLE_SUCCESS });
+export const DELETE_ARTICLE_ERROR = 'DELETE_ARTICLE_ERROR';
+export const deleteArticleError = message => ({
+  type: DELETE_ARTICLE_ERROR,
+  message,
+});
+export const deleteArticle = id => async dispatch => {
+  try {
+    await client.del(`articles/${id}`);
+    dispatch(deleteArticleSuccess());
+    dispatch(getArticles());
+  } catch (e) {
+    dispatch(deleteArticleError(e.message));
+  }
+};
