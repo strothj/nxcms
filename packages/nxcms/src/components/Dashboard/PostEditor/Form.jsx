@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Prompt } from 'react-router-dom';
-import { Form as ReactForm, Text, Textarea } from 'react-form';
-import SplitContainer from '../../SplitContainer';
+import { Form as ReactForm } from 'react-form';
+
+import SplitContainer from 'components/SplitContainer';
 import ToggleSection from './ToggleSection';
-import TextField from './TextField';
-import SlugField from './SlugField';
-import PublishDateField from './PublishDateField';
-import EditorSelectField from './EditorSelectField';
-import TagsField from './TagsField';
+import {
+  TextField,
+  SlugField,
+  PublishDateField,
+  EditorSelectField,
+  TagsField,
+  TextArea,
+  PostContentField,
+} from './fields';
 
 const Form = props => (
   <ReactForm
@@ -29,38 +34,55 @@ const Form = props => (
           >
             {props.errorMessage && <p>Error: {props.errorMessage}</p>}
 
-            <SplitContainer>
-              <div>
-                <TextField field="title" floatingLabelText="Title" />
-                <SlugField titleValue={getValue('title')} />
-              </div>
-              <div>
-                <PublishDateField />
-                <EditorSelectField isAdmin={props.isAdmin} />
-              </div>
-            </SplitContainer>
-
-            <TextField
-              field="headerImageURL"
-              floatingLabelText="Header Image URL"
+            <SplitContainer
+              itemsLeft={[
+                <TextField field="title" floatingLabelText="Title" />,
+                <SlugField titleValue={getValue('title')} />,
+              ]}
+              itemsRight={[
+                <PublishDateField />,
+                <EditorSelectField isAdmin={props.isAdmin} />,
+              ]}
             />
 
-            <TextField
-              field="headerImageAttributionURL"
-              floatingLabelText="Header Image Attribution URL"
+            <SplitContainer
+              itemsLeft={[
+                <TextField
+                  field="headerImageURL"
+                  floatingLabelText="Header Image URL"
+                />,
+              ]}
+              itemsRight={[
+                <TextField
+                  field="headerImageAttributionURL"
+                  floatingLabelText="Header Image Attribution URL"
+                />,
+                <TextField
+                  field="headerImageAttributionText"
+                  floatingLabelText="Header Image Attribution Text"
+                />,
+              ]}
             />
 
-            <TextField
-              field="headerImageAttributionText"
-              floatingLabelText="Header Image Attribution Text"
+            <SplitContainer
+              itemsLeft={[
+                <TagsField />,
+                <TextField field="category" floatingLabelText="Category" />,
+              ]}
+              itemsRight={[
+                <TextField
+                  field="youtubeVideoID"
+                  floatingLabelText="Youtube Video ID"
+                />,
+                <TextArea field="synopsis" floatingLabelText="Synopsis" />,
+              ]}
             />
 
-            <TagsField />
-            Category: <Text field="category" />
-            Synopsis: <Text field="synopsis" />
-            Youtube ID: <Text field="youtubeVideoID" />
           </ToggleSection>
-          Content: <Textarea field="content" />
+
+          <ToggleSection label="Post Content" initiallyOpen>
+            <PostContentField />
+          </ToggleSection>
           <button type="submit" disabled={!props.hasMutations}>
             Submit
           </button>

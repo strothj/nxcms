@@ -1,8 +1,9 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
-import InfoOutlineIcon from 'material-ui/svg-icons/action/info-outline';
 
-const ToggleSectionContent = ({ children }) => <div>{children}</div>;
+const ToggleSectionContent = ({ children }) => (
+  <div style={{ padding: '0 24px' }}>{children}</div>
+);
 
 const ToggleSection = ({ label, children, initiallyOpen }) => (
   <List>
@@ -10,7 +11,6 @@ const ToggleSection = ({ label, children, initiallyOpen }) => (
       primaryText={label}
       primaryTogglesNestedList
       initiallyOpen={initiallyOpen}
-      leftIcon={<InfoOutlineIcon />}
       nestedItems={[
         <ToggleSectionContent key="1">{children}</ToggleSectionContent>,
       ]}

@@ -1,5 +1,5 @@
 import Radium from 'radium';
-import React from 'react';
+import React, { cloneElement } from 'react';
 import { breakpoints } from 'styles';
 
 const styles = {
@@ -12,13 +12,27 @@ const styles = {
       paddingRight: 24,
     },
   },
+  right: {
+    [`@media ${breakpoints.tablet}`]: {
+      paddingRight: 0,
+    },
+  },
 };
 
-const SplitContainer = props => (
-  <div style={styles.container}>
-    <div style={styles.half}>{props.children[0]}</div>
-    <div style={styles.half}>{props.children[1]}</div>
-  </div>
-);
+const SplitContainer = props => {
+  const itemsLeft = props.itemsLeft.map((c, index) =>
+    cloneElement(c, { key: index })
+  );
+  const itemsRight = props.itemsRight.map((c, index) =>
+    cloneElement(c, { key: index })
+  );
+
+  return (
+    <div style={styles.container}>
+      <div style={styles.half}>{itemsLeft}</div>
+      <div style={[styles.half, styles.right]}>{itemsRight}</div>
+    </div>
+  );
+};
 
 export default Radium(SplitContainer);

@@ -75,7 +75,5 @@ export default values => {
     // Flatten returned validation error arrays
     errors[kv[0]] = kv[1][0];
   });
-  console.log(errors); // eslint-disable-line no-console
-  console.log(cleanedValues.publishDate); // eslint-disable-line no-console
   return errors;
 };

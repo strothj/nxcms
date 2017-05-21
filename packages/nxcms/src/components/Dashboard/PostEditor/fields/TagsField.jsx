@@ -38,15 +38,17 @@ class TagsComponent extends Component {
 
   render() {
     return (
-      <ChipInput
-        floatingLabelText="Tags"
-        value={this.getValue()}
-        onRequestAdd={this.addTag}
-        onRequestDelete={this.removeTag}
-        onBlur={this.setTouched}
-        errorText={this.getErrorText()}
-        fullWidth
-      />
+      <div style={{ marginTop: -10, marginBottom: -2 }}>
+        <ChipInput
+          floatingLabelText="Tags"
+          value={this.getValue()}
+          onRequestAdd={this.addTag}
+          onRequestDelete={this.removeTag}
+          onBlur={this.setTouched}
+          errorText={this.getErrorText()}
+          fullWidth
+        />
+      </div>
     );
   }
 }

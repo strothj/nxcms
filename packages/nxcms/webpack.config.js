@@ -63,6 +63,10 @@ const modules = isProduction => {
         options: { limit: 10000, name: 'static/img/[name].[hash:7].[ext]' },
       },
     },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader'],
+    },
   ];
 
   if (!isProduction)
