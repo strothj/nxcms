@@ -10,6 +10,7 @@ import {
   SlugField,
   PublishDateField,
   EditorSelectField,
+  SubmitButton,
   TagsField,
   TextArea,
   PostContentField,
@@ -83,9 +84,8 @@ const Form = props => (
           <ToggleSection label="Post Content" initiallyOpen>
             <PostContentField />
           </ToggleSection>
-          <button type="submit" disabled={!props.hasMutations}>
-            Submit
-          </button>
+
+          <SubmitButton disabled={!props.hasMutations} />
         </form>
       </div>
     )}
