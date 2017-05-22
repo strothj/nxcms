@@ -17,7 +17,7 @@ module.exports = (env = {}) => {
     entry: entry(isProduction, devServerPort),
     output: output(isProduction, publicPath),
     module: modules(isProduction),
-    resolve: { extensions: ['.js', '.jsx'] },
+    resolve: { extensions: ['.js', '.jsx'], symlinks: false },
     plugins: plugins(isProduction),
     devServer: devServer(isProduction, devServerPort, publicAccessible),
     devtool: isProduction ? 'source-map' : 'inline-source-map',

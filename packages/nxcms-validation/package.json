@@ -1,0 +1,21 @@
+{
+  "name": "@nxcms/validation",
+  "version": "0.2.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "babel src -d dist --ignore spec.js",
+    "test": "mocha --opts mocha.opts"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "mocha": "^3.4.1"
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "validate.js": "^0.11.1"
+  }
+}
