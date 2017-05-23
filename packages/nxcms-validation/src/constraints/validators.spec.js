@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import validate from '../validate';
-import { bool, datetime } from './validators';
+import { bool, datetime, tags } from './validators';
 
 describe('validators', () => {
   describe('bool', () => {
@@ -43,6 +43,38 @@ describe('validators', () => {
       const errors = validate(obj, constraints);
 
       expect(errors.someDateField[0]).to.contain('sanity check');
+    });
+  });
+
+  describe('tags', () => {
+    const constraints = { tagField: tags };
+
+    it('returns error not present', () => {
+      const obj = {};
+      const errors = validate(obj, constraints);
+
+      expect(errors).to.exist;
+    });
+
+    it('returns error on invalid characters', () => {
+      const obj = { tagField: ['test$'] };
+      const errors = validate(obj, constraints);
+
+      expect(errors.tagField[0]).to.contain('contain only');
+    });
+
+    it('accepts empty array', () => {
+      const obj = { tagField: [] };
+      const errors = validate(obj, constraints);
+
+      expect(errors).to.not.exist;
+    });
+
+    it('accepts valid values', () => {
+      const obj = { tagField: ['JavaScript', 'Webpack2', 'Coding Styles'] };
+      const errors = validate(obj, constraints);
+
+      expect(errors).to.not.exist;
     });
   });
 });
