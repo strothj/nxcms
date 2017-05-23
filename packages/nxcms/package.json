@@ -1,7 +1,6 @@
 {
   "name": "@nxcms/nxcms",
-  "version": "0.2.0",
-  "private": true,
+  "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server --open",
     "start:public": "webpack-dev-server --open --env.publicAccessible",

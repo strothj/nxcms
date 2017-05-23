@@ -13,7 +13,11 @@ const content = { length: { minimum: 10, maximum: 10000 } };
 
 const editor = { length: { is: 24 } }; // Mongoose ID hex length
 
-const headerImageAttributionURL = { url: true };
+// Accept empty string or valid url.
+const headerImageAttributionURL = value => {
+  if (value.length === 0) return { presence: { allowEmpty: true } };
+  return { url: true };
+};
 
 const headerImageAttributionText = { length: { maximum: 30 } };
 
@@ -30,13 +34,13 @@ const slug = {
 
 const synopsis = { length: { maximum: 500 } };
 
-const tags = { tags: tagArray };
+const tags = { tagArray };
 
 const title = { length: { minimum: 4, maximum: 100 } };
 
 const youtubeVideoID = { length: { maximum: 30 } };
 
-export default [
+const constraints = {
   category,
   content,
   editor,
@@ -50,7 +54,13 @@ export default [
   tags,
   title,
   youtubeVideoID,
-].map(c => ({
-  ...c,
-  presence: true,
-}));
+};
+
+Object.getOwnPropertyNames(constraints).forEach(f => {
+  // Skip special case, optional url.
+  if (f === 'headerImageAttributionURL') return;
+
+  constraints[f].presence = { allowEmpty: true };
+});
+
+export default constraints;

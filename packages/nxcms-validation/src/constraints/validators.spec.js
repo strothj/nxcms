@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import validate from '../validate';
-import { bool, datetime, tags } from './validators';
+import { bool, datetime, tagArray } from './validators';
 
 describe('validators', () => {
   describe('bool', () => {
@@ -47,13 +47,20 @@ describe('validators', () => {
   });
 
   describe('tags', () => {
-    const constraints = { tagField: tags };
+    const constraints = { tagField: tagArray };
 
-    it('returns error not present', () => {
+    it('returns error if not present', () => {
       const obj = {};
       const errors = validate(obj, constraints);
 
       expect(errors).to.exist;
+    });
+
+    it('returns error if not an array', () => {
+      const obj = { tagField: null };
+      const errors = validate(obj, constraints);
+
+      expect(errors.tagField[0]).to.exist;
     });
 
     it('returns error on invalid characters', () => {
